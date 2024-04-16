@@ -22,15 +22,14 @@ export default function Message() {
 
     let [typeText, setTypeText] = useState("");
     let [messageList, setMessageList] = useState(messageListData.message);
-    let [lastMessageId, setLastMessageId] = useState(messageList[messageList.length-1].id);
+    let [lastMessageId, setLastMessageId] = useState(0);
 
     const sendAction = () => {
-       let newId = lastMessageId++; 
+       let newId = messageList[messageList.length-1].id + 1; 
         let newMessage = {id:newId, isOwnMessage:true, message:typeText};
         setMessageList(messageList => [...messageList, newMessage]);
         setTypeText("")
         setLastMessageId(newId);
-        //Consertar problema do id no array
     };
     return (
 

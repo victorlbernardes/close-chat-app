@@ -4,9 +4,9 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
+    Image,
 } from 'react-native';
 
-import * as Animatable from 'react-native-animatable'
 
 import { useNavigation } from '@react-navigation/native'
 
@@ -21,7 +21,7 @@ export default function RoomItem({ image, name, description, location, members }
     return (
         <TouchableOpacity onPress={() => {handleItemPress(name);}}>
             <View style={styles.container}>
-                <Animatable.Image
+                <Image
                     source={require('../assets/orange-compass.png')}
                     style={{ width: 120, height: 100 }}
                     resizeMode="contain"
