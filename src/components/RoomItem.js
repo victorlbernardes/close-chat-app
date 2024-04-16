@@ -8,10 +8,14 @@ import {
 
 import * as Animatable from 'react-native-animatable'
 
+import { useNavigation } from '@react-navigation/native'
+
 export default function RoomItem({ image, name, description, location, members }) {
 
+    const navigation = useNavigation();
+
     const handleItemPress = (name) => {
-        alert(`${name}`);
+        alert("Abrir tela do chat da sala " + `${name}`);
     };
 
     return (
