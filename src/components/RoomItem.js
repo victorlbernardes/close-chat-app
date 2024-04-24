@@ -14,15 +14,14 @@ export default function RoomItem({ image, name, description, location, members }
 
     const navigation = useNavigation();
 
-    const handleItemPress = (name) => {
-        alert("Abrir tela do chat da sala " + `${name}`);
-    };
-
     return (
-        <TouchableOpacity onPress={() => {handleItemPress(name);}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Message', {
+            profile: image,
+            profileDescription: name,
+        })}>
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/orange-compass.png')}
+                    source={image}
                     style={{ width: 120, height: 100 }}
                     resizeMode="contain"
                 />

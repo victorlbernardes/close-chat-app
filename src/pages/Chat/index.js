@@ -1,12 +1,10 @@
 import React from 'react';
 import {
     SafeAreaView,
-    View,
     FlatList,
     StyleSheet,
-    Text,
     StatusBar,
-    Image
+    TouchableOpacity
 } from 'react-native';
 
 import PersonalList from '../../data/personalList';
@@ -15,6 +13,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import PersonalChatItem from '../../components/PersonalChatItem';
 import SeparatorItem from '../../components/SeparatorItem';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default function Chat() {
@@ -30,6 +29,9 @@ export default function Chat() {
                 keyExtractor={item => item.id}
                 ItemSeparatorComponent={SeparatorItem}
             />
+            <TouchableOpacity style={styles.floatingButton}>
+                <Icon name="plus" size={30} color="white" />
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }
@@ -39,5 +41,16 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: StatusBar.currentHeight || 0,
         backgroundColor: '#FFE5B4',
+    },
+    floatingButton: {
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
+        backgroundColor: 'green',
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 });

@@ -25,7 +25,7 @@ export default function Routes() {
                 component={Menu}
                 options={{
                     headerShown: false,
-                    // gestureEnabled: falser
+                    gestureEnabled: false
                 }}
             />
             <Stack.Screen

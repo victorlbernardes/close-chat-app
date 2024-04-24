@@ -7,6 +7,7 @@ import {
     KeyboardAvoidingView,
     Platform,
     SafeAreaView,
+    Image,
     FlatList
 } from 'react-native';
 import ChatMessageItem from '../../components/ChatMessageItem';
@@ -17,16 +18,17 @@ import { useNavigation } from '@react-navigation/native'
 
 import messageListData from '../../data/messageList';
 
-export default function Message() {
-    const navigation = useNavigation();
+export default function Message({route, navigation}) {
+
+    const { profile, profileDescription } = route.params;
 
     let [typeText, setTypeText] = useState("");
     let [messageList, setMessageList] = useState(messageListData.message);
     let [lastMessageId, setLastMessageId] = useState(0);
 
     const sendAction = () => {
-       let newId = messageList[messageList.length-1].id + 1; 
-        let newMessage = {id:newId, isOwnMessage:true, message:typeText};
+        let newId = messageList[messageList.length - 1].id + 1;
+        let newMessage = { id: newId, isOwnMessage: true, message: typeText };
         setMessageList(messageList => [...messageList, newMessage]);
         setTypeText("")
         setLastMessageId(newId);
@@ -35,7 +37,13 @@ export default function Message() {
 
         <View style={styles.container}>
             <View style={styles.containerHeaderInfo}>
-                <Text>NOME DO CANAL</Text>
+                <Image
+                    source={profile}
+                    style={{ width: 60, height: 40, marginBottom: 15 }}
+                    resizeMode="contain"
+                />
+                <Text style={styles.title}>{profileDescription}</Text>
+
             </View>
             <View style={styles.containerChat}>
 
@@ -56,7 +64,7 @@ export default function Message() {
                             placeholder="Digite sua mensagem..."
                             onChangeText={(value) => {
                                 setTypeText(value)
-                              }}
+                            }}
                             value={typeText} />
                     </View>
                     <Icon.Button
@@ -76,11 +84,27 @@ export default function Message() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFE5B4'
+        backgroundColor: '#FFE5B4',
+        justifyContent: "space-between"
     },
     containerHeaderInfo: {
-        paddingTop: 40,
-        backgroundColor: 'red'
+        backgroundColor: '#FF7518',
+        alignItems: "center",
+        flexDirection:'row',
+        marginBottom: 15,
+        paddingTop: 15,
+    },
+    content: {
+        marginLeft: 16,
+        flexDirection: 'row',
+        alignItems:'center'
+    },
+    title: {
+        fontSize: 15,
+        fontWeight: "bold",
+        color: 'black',
+        marginBottom: 15,
+        textAlign: 'center'
     },
     containerChat: {
         marginTop: 20,

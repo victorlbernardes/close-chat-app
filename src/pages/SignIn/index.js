@@ -40,7 +40,7 @@ export default function SignIn() {
 
                 <TouchableOpacity
                     style={styles.buttonRegister}
-                    onPress={() => navigation.navigate('Message')}
+                    onPress={() => navigation.navigate('Welcome')}
                 >
                     <Text style={styles.registerText}>Não Possui uma conta? Cadastre-se</Text>
                 </TouchableOpacity>

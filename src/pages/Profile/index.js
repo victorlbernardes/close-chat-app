@@ -1,14 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native'
 
 export default function Profile() {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={styles.profileInfo}>
                 <View style={styles.avatarContainer}>
                     <Image
-                        source={require('../../assets/profile.png')} // Substitua por um path válido para a foto do usuário
+                        source={require('../../assets/profile.png')}
                         style={styles.avatar}
                     />
                     <TouchableOpacity style={styles.editIcon}>
@@ -30,7 +32,8 @@ export default function Profile() {
                     </TouchableOpacity>
                 </View>
             </View>
-            <TouchableOpacity style={styles.logoutButton}>
+            <TouchableOpacity style={styles.logoutButton}
+                onPress={() => navigation.navigate('Welcome')}>
                 <Text style={styles.buttonText}>Logout</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.floatingButton}>

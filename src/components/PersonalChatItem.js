@@ -10,19 +10,18 @@ import {
 
 import { useNavigation } from '@react-navigation/native'
 
-export default function PersonalChattem({ image, name, }) {
+export default function PersonalChattem({ image, name }) {
 
     const navigation = useNavigation();
 
-    const handleItemPress = (name) => {
-        alert("Abrir tela do chat da sala " + `${name}`);
-    };
-
     return (
-        <TouchableOpacity onPress={() => {handleItemPress(name);}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Message', {
+            profile: image,
+            profileDescription: name,
+        })}>
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/profile.png')}
+                    source={image}
                     style={{ width: 50, height: 50 }}
                     resizeMode="contain"
                 />
